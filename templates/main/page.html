@@ -1,0 +1,24 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+<!-- Main Start -->
+    <main>
+    	
+		<!-- Page -->
+		<section class="container my-4">
+			<h1 class="text-center mb-4 section-heading">{{page.title}}</h1>
+            <p class="lh-base">{{page.detail}}</p>
+			
+		</section>
+		<!-- End -->
+
+		
+    </main>
+    <!-- End -->
+
+<!-- LightBox css -->
+<!-- <link rel="stylesheet" type="text/css" href="{% static 'lightbox2-2.11.3/dist/css/lightbox.min.css' %}" /> -->
+<!-- LightBox Js -->
+<!-- <script type="text/javascript" src="{% static 'lightbox2-2.11.3/dist/js/lightbox.min.js' %}"></script> -->
+
+{% endblock %}

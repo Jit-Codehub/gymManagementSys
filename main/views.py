@@ -1,7 +1,37 @@
 from django.shortcuts import render
 from .models import *
+from .forms import *
 
 def home(request):
     banners = Banners.objects.all()
     services = Service.objects.all()[:3]
     return render(request, "main/home.html",{"banners":banners,"services":services})
+
+def page_detail(request,id):
+    page = Pages.objects.get(id=id)
+    return render(request,"main/page.html",{"page":page})
+
+def faq_list(request):
+    faqs = Faq.objects.all()
+    return render(request,"main/faq.html",{"faqs":faqs})
+
+def enquiry(request):
+    msg = ""
+    form = EnquiryForm()
+    if request.method=="POST":
+        form = EnquiryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            msg = "Data has been saved successfully"
+    return render(request,"main/enquiry.html",{"form":form,"msg":msg})
+
+
+def gallery(request):
+    gallery = Gallery.objects.all().order_by('-id')
+    return render(request,"main/gallery.html",{"gallerys":gallery})
+
+def gallery_detail(request,id):
+    gallery = Gallery.objects.get(id=id)
+    gallery_imgs=GalleryImage.objects.filter(gallery=gallery).order_by('-id')
+    return render(request,"main/gallery_imgs.html",{"gallery_imgs":gallery_imgs,"gallery":gallery})
+
