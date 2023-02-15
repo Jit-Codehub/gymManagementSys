@@ -138,3 +138,6 @@ JAZZMIN_SETTINGS = {
     "site_brand": "GYM Dashboard",
     "order_with_respect_to": ["main.Gallery","main.GalleryImage","main.SubPlan","main.SubPlanFeature"],
     }
+
+LOGIN_REDIRECT_URL = "home"
+LOGOUT_REDIRECT_URL = "login"
