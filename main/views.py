@@ -5,7 +5,8 @@ from .forms import *
 def home(request):
     banners = Banners.objects.all()
     services = Service.objects.all()[:3]
-    return render(request, "main/home.html",{"banners":banners,"services":services})
+    gimgs = GalleryImage.objects.all().order_by('-id')[:9]
+    return render(request, "main/home.html",{"banners":banners,"services":services,"gimgs":gimgs})
 
 def page_detail(request,id):
     page = Pages.objects.get(id=id)
@@ -34,4 +35,9 @@ def gallery_detail(request,id):
     gallery = Gallery.objects.get(id=id)
     gallery_imgs=GalleryImage.objects.filter(gallery=gallery).order_by('-id')
     return render(request,"main/gallery_imgs.html",{"gallery_imgs":gallery_imgs,"gallery":gallery})
+
+def pricing(request):
+    pricing = SubPlan.objects.all()
+    dfeatures = SubPlanFeature.objects.all()
+    return render(request,"main/pricing.html",{"plans":pricing,"dfeatures":dfeatures})
 

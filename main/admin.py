@@ -30,3 +30,16 @@ class GalleryAdmin(admin.ModelAdmin):
 @admin.register(GalleryImage)
 class GalleryImageAdmin(admin.ModelAdmin):
     list_display = ('alt_text','image_tag')
+
+@admin.register(SubPlan)
+class SubPlanAdmin(admin.ModelAdmin):
+    list_editable = ['highlight_status']
+    list_display = ('title','price','highlight_status')
+
+
+@admin.register(SubPlanFeature)
+class SubPlanFeatureAdmin(admin.ModelAdmin):
+    list_display = ('title','subplans')
+
+    def subplans(self, obj):
+        return " | ".join([sub.title for sub in obj.subplan.all()])

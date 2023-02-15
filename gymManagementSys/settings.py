@@ -136,4 +136,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 JAZZMIN_SETTINGS = {
     "site_title": "GYM Dashboard",
     "site_brand": "GYM Dashboard",
+    "order_with_respect_to": ["main.Gallery","main.GalleryImage","main.SubPlan","main.SubPlanFeature"],
     }

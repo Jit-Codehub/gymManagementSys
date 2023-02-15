@@ -1,4 +1,5 @@
 {% extends 'base/base.html' %}
+{% load static %}
 {% block content %}
     <!-- Main Start -->
     <main>
@@ -9,7 +10,9 @@
 				{% for gimg in gallery_imgs %}
 				<div class="col-md-4 mb-4">
 					<div class="card">
-					  <img src="{{gimg.img.url}}" class="card-img-top" alt="{{gimg.alt_text}}">
+						<a href="{{gimg.img.url}}" data-lightbox="gallery"> <img src="{{gimg.img.url}}" class="card-img-top" alt="{{gimg.alt_text}}"></a>
+
+					  <!-- <a href="{{gimg.img.url}}" data-lightbox="gallery"><img src="{{gimg.img.url}}" width="155" class="img-thumbnail" alt="{{gimg.alt_text}}"></a> -->
 					</div>
 				</div>
 				{% endfor %}
@@ -18,4 +21,8 @@
 		<!-- End -->
     </main>
     <!-- End -->
+	<!-- LightBox css -->
+<link rel="stylesheet" type="text/css" href="{% static 'lightbox2-dev/dist/css/lightbox.min.css' %}" />
+<!-- LightBox Js -->
+<script type="text/javascript" src="{% static 'lightbox2-dev/dist/js/lightbox.min.js' %}"></script>
 {% endblock %}

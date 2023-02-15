@@ -72,3 +72,22 @@ class GalleryImage(models.Model):
 
     def image_tag(self):
         return mark_safe(f'<img src="{self.img.url}" width="80"')
+
+
+class SubPlan(models.Model):
+    title = models.CharField(max_length=100)
+    price = models.IntegerField()
+    highlight_status=models.BooleanField(default=False, null=True)
+
+    def __str__(self):
+        return self.title
+
+
+class SubPlanFeature(models.Model):
+    subplan = models.ManyToManyField(SubPlan)
+    title = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.title
+
+
