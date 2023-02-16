@@ -49,4 +49,13 @@ class SubPlanFeatureAdmin(admin.ModelAdmin):
 class PlanDiscountAdmin(admin.ModelAdmin):
     list_display = ('subPlan','total_months','total_discount')
 
+@admin.register(Subscriber)
+class SubscriberAdmin(admin.ModelAdmin):
+    list_display = ('user','image_tag','mobile')
+
+
+@admin.register(Subscription)
+class SubscriptionAdmin(admin.ModelAdmin):
+    list_display = ('user','plan','price')
+
   

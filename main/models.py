@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.html import mark_safe
+from django.contrib.auth.models import User
 
 class Service(models.Model):
     title = models.CharField(max_length=150)
@@ -99,5 +100,27 @@ class PlanDiscount(models.Model):
 
     def __str__(self):
         return str(self.total_months)
+
+
+
+class Subscriber(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    mobile = models.CharField(max_length=150)
+    address = models.TextField()
+    img=models.ImageField(upload_to="subs/")
+
+    def __str__(self):
+        return self.user
+
+    def image_tag(self):
+        return mark_safe(f'<img src="{self.img.url}" width="80"')
+
+
+
+class Subscription(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    plan = models.ForeignKey(SubPlan, on_delete=models.CASCADE)
+    price = models.CharField(max_length=150)
+  
 
 
