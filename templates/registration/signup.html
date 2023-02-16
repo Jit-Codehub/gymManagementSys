@@ -6,7 +6,7 @@
     <main>
 		<!-- Services -->
 		<section class="container my-4">
-			<h1 class="text-center mb-4 section-heading border-bottom pb-2">Login Form</h1>
+			<h1 class="text-center mb-4 section-heading border-bottom pb-2">Registraion Form</h1>
 			<div class="row">
 				<div class="col-md-6 offset-3">
 					{% if msg %}
@@ -23,7 +23,7 @@
 							</tr>
 						</table>
 					</form>
-					<b>If not register then please <a href="{% url 'signup' %}">signup.</a></b>
+                    <b>If already register then please <a href="{% url 'login' %}">login.</a></b>
 				</div>
 			</div>
 		</section>
@@ -31,6 +31,6 @@
     </main>
     <!-- End -->
     {% else %}
-  <center>  <h1>You are already logged in.</h1></center>
+  <center>  <h1>You are already registered.</h1></center>
     {% endif %}
 {% endblock %}

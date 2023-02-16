@@ -41,3 +41,17 @@ def pricing(request):
     dfeatures = SubPlanFeature.objects.all()
     return render(request,"main/pricing.html",{"plans":pricing,"dfeatures":dfeatures})
 
+
+def signup(request):
+    msg=""
+    form = SignupForm()
+    if request.method=="POST":
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            form.save()
+            msg="Thanks for registration"
+    return render(request,"registration/signup.html",{"form":form,"msg":msg})
+    
+
+        
+
