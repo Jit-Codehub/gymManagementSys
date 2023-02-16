@@ -33,8 +33,8 @@ class GalleryImageAdmin(admin.ModelAdmin):
 
 @admin.register(SubPlan)
 class SubPlanAdmin(admin.ModelAdmin):
-    list_editable = ['highlight_status']
-    list_display = ('title','price','highlight_status')
+    list_editable = ['highlight_status',"max_member"]
+    list_display = ('title','price',"max_member",'highlight_status')
 
 
 @admin.register(SubPlanFeature)

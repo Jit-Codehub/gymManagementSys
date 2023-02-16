@@ -37,7 +37,7 @@ def gallery_detail(request,id):
     return render(request,"main/gallery_imgs.html",{"gallery_imgs":gallery_imgs,"gallery":gallery})
 
 def pricing(request):
-    pricing = SubPlan.objects.all()
+    pricing = SubPlan.objects.all().order_by('price')
     dfeatures = SubPlanFeature.objects.all()
     return render(request,"main/pricing.html",{"plans":pricing,"dfeatures":dfeatures})
 
