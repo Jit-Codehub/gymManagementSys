@@ -51,6 +51,12 @@ def signup(request):
             form.save()
             msg="Thanks for registration"
     return render(request,"registration/signup.html",{"form":form,"msg":msg})
+
+
+
+def checkout(request,plan_id):
+    planDetail = SubPlan.objects.get(pk=plan_id)
+    return render(request,"main/checkout.html",{"plan":planDetail})
     
 
         

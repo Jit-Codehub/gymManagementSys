@@ -43,3 +43,10 @@ class SubPlanFeatureAdmin(admin.ModelAdmin):
 
     def subplans(self, obj):
         return " | ".join([sub.title for sub in obj.subplan.all()])
+
+
+@admin.register(PlanDiscount)
+class PlanDiscountAdmin(admin.ModelAdmin):
+    list_display = ('subPlan','total_months','total_discount')
+
+  
