@@ -57,6 +57,19 @@ def signup(request):
 def checkout(request,plan_id):
     planDetail = SubPlan.objects.get(pk=plan_id)
     return render(request,"main/checkout.html",{"plan":planDetail})
+
+def user_dashboard(request):
+    return render(request,"user/dashboard.html")
+
+def update_profile(request):
+    msg = ""
+    if request.method == "POST":
+        form = ProfileForm(request.POST,instance=request.user)
+        if form.is_valid():
+            form.save()
+            msg = "Profile has been updated"
+    form = ProfileForm(instance=request.user)
+    return render(request,"user/update_profile.html",{"form":form,"msg":msg})
     
 
         

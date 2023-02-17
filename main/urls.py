@@ -10,6 +10,10 @@ urlpatterns = [
     path('pricing/', views.pricing, name="pricing"),
     path('accounts/signup/', views.signup, name="signup"),
     path('checkout/<int:plan_id>/', views.checkout, name="checkout"),
+    path('user-dashboard/', views.user_dashboard, name="user_dashboard"),
+    #user-dashboard section part
+    path('update-profile/', views.update_profile, name="update_profile"),
+
 
 
 ]
