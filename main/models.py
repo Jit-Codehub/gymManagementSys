@@ -1,7 +1,8 @@
 from django.db import models
 from django.utils.html import mark_safe
 from django.contrib.auth.models import User
-
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 class Service(models.Model):
     title = models.CharField(max_length=150)
     detail = models.TextField()
@@ -110,12 +111,19 @@ class Subscriber(models.Model):
     img=models.ImageField(upload_to="subs/")
 
     def __str__(self):
-        return self.user
+        return str(self.user)
 
     def image_tag(self):
-        return mark_safe(f'<img src="{self.img.url}" width="80"')
+        if self.img:
+            return mark_safe(f'<img src="{self.img.url}" width="80"')
+        else:
+            return 'no-image'
 
 
+@receiver(post_save, sender=User)
+def create_subscriber(sender, instance, created, **kwargs):
+    if created:
+        Subscriber.objects.create(user=instance)
 
 class Subscription(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
