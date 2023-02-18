@@ -64,4 +64,9 @@ class TrainerAdmin(admin.ModelAdmin):
     list_editable = ('is_active',)
     list_display = ('full_name','mobile','is_active','image_tag',)
 
+
+@admin.register(Notify)
+class NotifyAdmin(admin.ModelAdmin):
+    list_display = ('notify_detail','read_by_user','read_by_trainer')
+
   

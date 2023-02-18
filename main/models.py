@@ -150,6 +150,16 @@ class Trainer(models.Model):
             return mark_safe(f'<img src="{self.img.url}" width="80"')
         else:
             return 'no-image'
+
+
+class Notify(models.Model):
+    notify_detail = models.CharField(max_length=100)
+    read_by_user = models.ForeignKey(User, on_delete=models.CASCADE,null=True,blank=True)
+    read_by_trainer = models.ForeignKey(Trainer, on_delete=models.CASCADE,null=True,blank=True)
+
+
+    def __str__(self):
+        return self.notify_detail
   
 
 

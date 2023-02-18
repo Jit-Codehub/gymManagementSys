@@ -93,6 +93,11 @@ def trainerlogout(request):
     del request.session['trainerLogin']
     return redirect('/trainerlogin')
 
+
+def notifs(request):
+    data = Notify.objects.all().order_by('-id')
+    return render(request,"notifs.html",{"data":data})
+
         
 
         
