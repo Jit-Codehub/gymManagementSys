@@ -13,6 +13,8 @@ urlpatterns = [
     path('user-dashboard/', views.user_dashboard, name="user_dashboard"),
     #user-dashboard section part
     path('update-profile/', views.update_profile, name="update_profile"),
+    path('trainerlogin/', views.trainerlogin, name="trainerlogin"),
+    path('trainerlogout/', views.trainerlogout, name="trainerlogout"),
 
 
 

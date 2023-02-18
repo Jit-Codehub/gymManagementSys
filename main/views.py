@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
 from .forms import *
 
@@ -70,7 +70,30 @@ def update_profile(request):
             msg = "Profile has been updated"
     form = ProfileForm(instance=request.user)
     return render(request,"user/update_profile.html",{"form":form,"msg":msg})
-    
+
+
+
+def trainerlogin(request):
+    msg = ""
+    form = TrainerForm()
+    if request.method=="POST":
+        username = request.POST['username']
+        pwd = request.POST['pwd']
+        trainer = Trainer.objects.filter(username=username, pwd=pwd).count()
+        if trainer > 0:
+            request.session['trainerLogin']=True
+            return redirect('/trainer_dashboard')
+        else:
+            msg='Invalid Credentials!!'
+        
+    return render(request,"trainer/login.html",{"form":form,"msg":msg})
+
+
+def trainerlogout(request):
+    del request.session['trainerLogin']
+    return redirect('/trainerlogin')
+
+        
 
         
 
