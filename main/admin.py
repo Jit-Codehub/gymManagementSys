@@ -58,4 +58,10 @@ class SubscriberAdmin(admin.ModelAdmin):
 class SubscriptionAdmin(admin.ModelAdmin):
     list_display = ('user','plan','price')
 
+
+@admin.register(Trainer)
+class TrainerAdmin(admin.ModelAdmin):
+    list_editable = ('is_active',)
+    list_display = ('full_name','mobile','is_active','image_tag',)
+
   

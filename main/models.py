@@ -129,6 +129,25 @@ class Subscription(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     plan = models.ForeignKey(SubPlan, on_delete=models.CASCADE)
     price = models.CharField(max_length=150)
+
+
+
+class Trainer(models.Model):
+    full_name = models.CharField(max_length=100)
+    mobile = models.CharField(max_length=100)
+    address = models.TextField()
+    is_active = models.BooleanField(default=False)
+    detail = models.TextField()
+    img=models.ImageField(upload_to="trainers/")
+
+    def __str__(self):
+        return self.full_name
+
+    def image_tag(self):
+        if self.img:
+            return mark_safe(f'<img src="{self.img.url}" width="80"')
+        else:
+            return 'no-image'
   
 
 
