@@ -18,6 +18,7 @@ urlpatterns = [
     path('trainerlogout/', views.trainerlogout, name="trainerlogout"),
     #notification
     path('notifs/', views.notifs, name="notifs"),
+    path('get_notifs/', views.get_notifs, name="get_notifs"),
 
 
 

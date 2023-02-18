@@ -12,9 +12,8 @@
                 </div>
                 <div class="col-9">
                <h3 class="mb-4 border-bottom pb-4">Notification <span class="badge bg-primary">123</span></h3>
-               <ul class="list-group">
-                <li class="list-group-item">This is notification 2 <span class="float-end">✅</span></li>
-                <li class="list-group-item bg-light">This is notification 1 <button class="btn btn-sm btn-secondary float-end">Mark read</button></li>
+               <ul class="list-group notif-list">
+               loading.....
                </ul>
                     
                 </div>
@@ -26,5 +25,27 @@
 		
     </main>
     <!-- End -->
+
+<script>
+    $(document).ready(function(){
+        console.log("hello")
+        setInterval(function(){
+            $.ajax({
+                url:'{% url "get_notifs" %}',
+                dataType:'JSON',
+                success:function(res){
+                    console.log(res)
+                    _html = '';
+                    __json=$.parseJSON(res.data);
+                    $.each(__json,function(index, d){
+                        console.log(d)
+                        _html+='<li class="list-group-item bg-light">'+d.fields.notify_detail+ '<button class="btn btn-sm btn-secondary float-end">Mark read</button></li>';
+                    })
+                    $(".notif-list").html(_html);
+                }
+            });
+        },2000);
+    });
+</script>
 
 {% endblock %}

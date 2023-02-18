@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from .models import *
 from .forms import *
+from django.core import serializers
+from django.http import JsonResponse
 
 def home(request):
     banners = Banners.objects.all()
@@ -97,6 +99,11 @@ def trainerlogout(request):
 def notifs(request):
     data = Notify.objects.all().order_by('-id')
     return render(request,"notifs.html",{"data":data})
+
+def get_notifs(request):
+    data = Notify.objects.all().order_by('-id')
+    jsondata = serializers.serialize("json",data)
+    return JsonResponse({"data":jsondata})
 
         
 
