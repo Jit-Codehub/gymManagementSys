@@ -81,6 +81,7 @@ class SubPlan(models.Model):
     price = models.IntegerField()
     max_member = models.IntegerField(null=True)
     highlight_status=models.BooleanField(default=False, null=True)
+    validity_days=models.IntegerField(null=True)
 
     def __str__(self):
         return self.title
@@ -129,6 +130,7 @@ class Subscription(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     plan = models.ForeignKey(SubPlan, on_delete=models.CASCADE)
     price = models.CharField(max_length=150)
+    reg_date = models.DateField(auto_now_add=True, null=True)
 
 
 

@@ -3,6 +3,8 @@ from .models import *
 from .forms import *
 from django.core import serializers
 from django.http import JsonResponse
+from django.db.models import Count
+from datetime import timedelta
 
 def home(request):
     banners = Banners.objects.all()
@@ -39,7 +41,7 @@ def gallery_detail(request,id):
     return render(request,"main/gallery_imgs.html",{"gallery_imgs":gallery_imgs,"gallery":gallery})
 
 def pricing(request):
-    pricing = SubPlan.objects.all().order_by('price')
+    pricing = SubPlan.objects.annotate(total_members=Count('subscription__id')).all().order_by('price')
     dfeatures = SubPlanFeature.objects.all()
     return render(request,"main/pricing.html",{"plans":pricing,"dfeatures":dfeatures})
 
@@ -63,7 +65,8 @@ def checkout(request,plan_id):
 def user_dashboard(request):
     current_plan = Subscription.objects.get(user=request.user)
     my_trainer = AssignSubscriber.objects.get(user=request.user)
-    return render(request,"user/dashboard.html",{"current_plan":current_plan,"my_trainer":my_trainer})
+    enddate = current_plan.reg_date+timedelta(days=current_plan.plan.validity_days)
+    return render(request,"user/dashboard.html",{"current_plan":current_plan,"my_trainer":my_trainer,"enddate":enddate})
 
 def update_profile(request):
     msg = ""
