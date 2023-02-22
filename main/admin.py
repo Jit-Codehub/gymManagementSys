@@ -71,6 +71,6 @@ class NotifyAdmin(admin.ModelAdmin):
 
 @admin.register(AssignSubscriber)
 class AssignSubscriberAdmin(admin.ModelAdmin):
-    list_display = ('subscriber','trainer')
+    list_display = ('user','trainer')
 
   

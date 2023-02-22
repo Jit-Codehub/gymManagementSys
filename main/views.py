@@ -61,7 +61,9 @@ def checkout(request,plan_id):
     return render(request,"main/checkout.html",{"plan":planDetail})
 
 def user_dashboard(request):
-    return render(request,"user/dashboard.html")
+    current_plan = Subscription.objects.get(user=request.user)
+    my_trainer = AssignSubscriber.objects.get(user=request.user)
+    return render(request,"user/dashboard.html",{"current_plan":current_plan,"my_trainer":my_trainer})
 
 def update_profile(request):
     msg = ""
