@@ -160,6 +160,15 @@ class Notify(models.Model):
 
     def __str__(self):
         return self.notify_detail
+
+
+
+class AssignSubscriber(models.Model):
+    subscriber = models.ForeignKey(Subscriber, on_delete=models.CASCADE)
+    trainer = models.ForeignKey(Trainer, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.subscriber)
   
 
 

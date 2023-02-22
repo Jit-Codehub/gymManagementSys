@@ -69,4 +69,8 @@ class TrainerAdmin(admin.ModelAdmin):
 class NotifyAdmin(admin.ModelAdmin):
     list_display = ('notify_detail','read_by_user','read_by_trainer')
 
+@admin.register(AssignSubscriber)
+class AssignSubscriberAdmin(admin.ModelAdmin):
+    list_display = ('subscriber','trainer')
+
   
