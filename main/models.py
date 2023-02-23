@@ -146,6 +146,7 @@ class Trainer(models.Model):
     facebook = models.CharField(max_length=100,null=True)
     twitter = models.CharField(max_length=100,null=True)
     youtube = models.CharField(max_length=100,null=True)
+    salary = models.IntegerField(default=0)
 
     def __str__(self):
         return self.full_name
@@ -174,6 +175,20 @@ class AssignSubscriber(models.Model):
 
     def __str__(self):
         return str(self.user)
+
+
+
+class TrainerSalary(models.Model):
+    trainer = models.ForeignKey(Trainer, on_delete=models.CASCADE)
+    amt=models.IntegerField()
+    amt_date=models.DateField()
+    remarks=models.TextField(blank=True)
+
+    class Meta:
+        verbose_name_plural='Trainer Salary'
+
+    def __str__(self):
+        return str(self.trainer.full_name)
   
 
 

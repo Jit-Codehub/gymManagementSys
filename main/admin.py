@@ -62,7 +62,7 @@ class SubscriptionAdmin(admin.ModelAdmin):
 @admin.register(Trainer)
 class TrainerAdmin(admin.ModelAdmin):
     list_editable = ('is_active',)
-    list_display = ('full_name','mobile','is_active','image_tag',)
+    list_display = ('full_name','mobile','salary','is_active','image_tag',)
 
 
 @admin.register(Notify)
@@ -72,5 +72,10 @@ class NotifyAdmin(admin.ModelAdmin):
 @admin.register(AssignSubscriber)
 class AssignSubscriberAdmin(admin.ModelAdmin):
     list_display = ('user','trainer')
+
+
+@admin.register(TrainerSalary)
+class AssignSubscriberAdmin(admin.ModelAdmin):
+    list_display = ('trainer','amt','amt_date')
 
   
