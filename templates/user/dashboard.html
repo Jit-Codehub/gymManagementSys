@@ -13,23 +13,36 @@
               <div class="col-9">
                 <center>  <h3 class="mb-4 border-bottom pb-1">Dashboard</h3></center>
                 <div class="row">
-                  <div class="col-md-4">
+                  <div class="col-md-6">
                     <div class="card">
                       <h5 class="card-header">Current Plan</h5>
-                      <div class="card-body">
-                      <h6 class="card-text">{{current_plan.plan}}</h6>
-                      <p>Price:{{current_plan.price}}</p>
-                      <p>Purchased on: {{current_plan.reg_date}}</p>
-                      <p>Expires on: {{enddate}}</p>
-                    </div>
+                      <ul class="list-group">
+                        <li class="list-group-item">
+                        <h6 class="card-text">{{current_plan.plan}}</h6></li>
+                        <li class="list-group-item">Price:{{current_plan.price}}</li>
+                        <li class="list-group-item">Purchased on: {{current_plan.reg_date}}</li>
+                        <li class="list-group-item">Expires on: {{enddate}}</li>
+                    </ul>
                     </div>
                   </div>
                 
                 <div class="col-md-4">
                   <div class="card">
                     <h5 class="card-header">Assign Trainer</h5>
+                    <img src="{{my_trainer.trainer.img.url}}" alt="" class="card-img-top">
                     <div class="card-body">
                       <h6 class="card-text">{{my_trainer.trainer}}</h6>
+                      <div class="card-footer">
+                      <a href="{{my_trainer.trainer.facebook}}" class="fa fa-facebook" style="font-size: 18px;
+                      width: 20px;text-align: center;text-decoration: none;
+                      margin: 5px 2px;background: #3B5998;color: white;"></a>
+                      <a href="{{my_trainer.trainer.youtube}}" class="fa fa-youtube" style="font-size: 18px;
+                      width: 20px;text-align: center;text-decoration: none;
+                      margin: 5px 2px;background: #bb0000;color: white;"></a>
+                      <a href="{{my_trainer.trainer.twitter}}" class="fa fa-twitter" style="font-size: 18px;
+                      width: 20px;text-align: center;text-decoration: none;
+                      margin: 5px 2px;background: #55ACEE;color: white;"></a>
+                      </div>
                     </div>
                   </div>
                 </div>
